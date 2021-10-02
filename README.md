@@ -2,7 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, close this repository:
+```bash
+gh repo clone edehlol/next-template my-app
+```
+
+Then, install the dependencies:
+```bash
+ npm install
+```
+
+And finally, run the development server:
 
 ```bash
 npm run dev

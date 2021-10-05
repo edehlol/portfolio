@@ -5,8 +5,8 @@
 .bg-dark {
   background-color: #35363a;
 }
-/* @layer components {
-    .bg-dark {
-        @apply 
-    }
-} */
+@layer components {
+  .container {
+    @apply px-8 sm:px-12 md:px-16 lg:px-24 flex justify-center items-center;
+  }
+}

@@ -25,18 +25,6 @@ const Navbar = () => {
         return '';
     }
   };
-  const renderPageTitle = () => {
-    switch (router.pathname) {
-      case '/blog':
-        return '~/blog';
-      case '/projects':
-        return '~/projects';
-      case 'about':
-        return '~/about';
-      default:
-        return '~';
-    }
-  };
   const renderDarkmodeBtn = () => {
     if (mounted) {
       return theme === 'dark' ? (
@@ -46,9 +34,30 @@ const Navbar = () => {
       );
     }
   };
+  const renderNavigation = () => {
+    console.log(router);
+    const paths = router.asPath.split('/');
+    console.log(paths);
+
+    return paths.map((path, index) => {
+      if (path === '') {
+        if (index === 0) {
+          return <span className="hover:underline hover:cursor-pointer">~</span>;
+        }
+      } else {
+        return (
+          <Link href={`/`} passHref>
+            <>
+              /<span className="hover:underline hover:cursor-pointer">{path}</span>
+            </>
+          </Link>
+        );
+      }
+    });
+  };
 
   return (
-    <div className="border-b h-16 flex items-center w-screen">
+    <div className="border-b h-12 flex justify-center items-center w-screen">
       <div className="container flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" passHref>
@@ -56,7 +65,8 @@ const Navbar = () => {
               className={`h-8 hover:cursor-pointer transform hover:scale-90 duration-75 ease-in-out ${GridIconColor()}`}
             />
           </Link>
-          <h2 className="ml-2 font-semibold">{renderPageTitle()}</h2>
+          {/* <h2 className="ml-2 font-semibold">~{router.asPath === '/' ? '' : router.asPath}</h2> */}
+          <div className="ml-2 font-semibold">{renderNavigation()}</div>
         </div>
         {renderDarkmodeBtn()}
       </div>

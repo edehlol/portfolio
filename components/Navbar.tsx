@@ -21,9 +21,20 @@ const Navbar = () => {
         return 'text-red-500';
       case '/projects':
         return 'text-purple-500';
-
-      case '/':
+      default:
         return '';
+    }
+  };
+  const renderPageTitle = () => {
+    switch (router.pathname) {
+      case '/blog':
+        return '~/blog';
+      case '/projects':
+        return '~/projects';
+      case 'about':
+        return '~/about';
+      default:
+        return '~';
     }
   };
   const renderDarkmodeBtn = () => {
@@ -45,7 +56,7 @@ const Navbar = () => {
               className={`h-8 hover:cursor-pointer transform hover:scale-90 duration-75 ease-in-out ${GridIconColor()}`}
             />
           </Link>
-          <h2 className="pl-2 text-xl">Edy</h2>
+          <h2 className="ml-2 font-semibold">{renderPageTitle()}</h2>
         </div>
         {renderDarkmodeBtn()}
       </div>
